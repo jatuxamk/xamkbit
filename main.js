@@ -4,6 +4,7 @@ const portti = process.env.PORT || 3000;
 
 const uutiset = require("./models/iltalehti");
 const saatiedot = require("./models/saatiedot");
+const valuutat = require("./models/valuutat");
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -57,6 +58,17 @@ app.get("/saaennuste/:kaupunki?", (req, res) => {
         res.json(data);
 
     }, kaupunki);
+
+});
+
+app.get("/valuutat", (req, res) => {
+
+
+    valuutat.haeValuutat((data) => {
+
+        res.json(data);
+
+    });
 
 });
 
