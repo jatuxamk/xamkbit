@@ -38,13 +38,23 @@ module.exports = {
 
                 haeData(urli).then((data) => {
                     
-                    cache = JSON.parse(data);
+                    try {
 
-                    fs.writeFile(cachefile, JSON.stringify(cache, null, 2), (err) => {
+                        cache = JSON.parse(data);
+
+                        fs.writeFile(cachefile, JSON.stringify(cache, null, 2), (err) => {
+    
+                            callback(cache);
+    
+                        });    
+
+                    } catch (e) {
 
                         callback(cache);
 
-                    });                    
+                    }
+
+                
         
                 });
 
