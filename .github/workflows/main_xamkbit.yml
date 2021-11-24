@@ -24,6 +24,8 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
+          npm run build --if-present
+          npm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -50,5 +52,5 @@ jobs:
         with:
           app-name: 'xamkbit'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4083A28A1CE14644A7D7AE63D2389933 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D4CA83C85B93407790107FEAC68217BC }}
           package: .
