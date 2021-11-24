@@ -40,13 +40,23 @@ module.exports = {
                     
                     try {
 
-                        cache = JSON.parse(data);
+                        let cachetesti = JSON.parse(data);
 
-                        fs.writeFile(cachefile, JSON.stringify(cache, null, 2), (err) => {
+                        if (cachetesti.success === true) {
+
+                            cache = cachetesti;
+
+                            fs.writeFile(cachefile, JSON.stringify(cache, null, 2), (err) => {
     
+                                callback(cache);
+        
+                            }); 
+
+                        } else {
+
                             callback(cache);
-    
-                        });    
+        
+                        }                           
 
                     } catch (e) {
 
