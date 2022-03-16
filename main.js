@@ -43,6 +43,24 @@ app.get("/saatilanne/:kaupunki?", (req, res) => {
 
 });
 
+app.get("/tilanne/:kaupunki?", (req, res) => {
+
+    let kaupunki = "mikkeli";
+
+    if (req.params.kaupunki) {
+
+        kaupunki = req.params.kaupunki.toLowerCase();
+
+    }
+
+    saatiedot.haeTilanne((data) => {
+
+        res.json(data);
+
+    }, kaupunki);
+
+});
+
 app.get("/saaennuste/:kaupunki?", (req, res) => {
 
     let kaupunki = "mikkeli";
