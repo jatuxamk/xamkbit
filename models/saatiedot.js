@@ -28,9 +28,7 @@ module.exports = {
 
                 haeData(urli).then((data) => {
                     
-                    cache.tilanne[kaupunki] =JSON.parse(data);
-
-                    callback(JSON.parse(data));                
+                     callback(JSON.parse(data));                
         
                 });
 
@@ -42,8 +40,6 @@ module.exports = {
                 let urli = `http://api.openweathermap.org/data/2.5/forecast?q=${kaupunki},fi&units=metric&lang=fi&APPID=8cf32db5af877d14abb7f1578c548358`;
 
                 haeData(urli).then((data) => {
-                    
-                    cache.ennuste[kaupunki] = JSON.parse(data);
 
                     callback(JSON.parse(data));
             
